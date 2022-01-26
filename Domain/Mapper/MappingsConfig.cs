@@ -9,7 +9,7 @@ namespace Domain.Mapper
             var config = new MapperConfiguration(c =>
             {
                 c.AddProfile(new ExampleClassProfile());
-
+                c.AddProfile(new InterestRateProfile());
             });
             return config;
         }

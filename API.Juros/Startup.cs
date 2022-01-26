@@ -1,3 +1,4 @@
+using API.Juros.Configurations;
 using API.Juros.Configurations.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,7 +34,8 @@ namespace API.Juros
                     options.JsonSerializerOptions.IgnoreNullValues = true;
                 });
 
-            services.AddSwaggerConfiguration();
+            services.AddSwaggerConfiguration()
+                    .AddVersionConfiguration();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

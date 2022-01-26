@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Domain.Entities
 {
-    public class TaxaJuros
+    public class TaxaJuros : Entity
     {
         #region Propriedades
         private decimal Taxa { get; set; }

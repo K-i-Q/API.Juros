@@ -3,7 +3,7 @@
 namespace Domain.Dtos
 {
     [Serializable]
-    public class ExemploDtoResponse
+    public class TaxaJurosDtoResponse
     {
         public decimal Saldo { get; set; }
         public string Mensagem { get; set; }

@@ -1,7 +1,7 @@
 ﻿
-namespace Domain.Commands
+namespace Domain.Commands.Response
 {
-    public class ExemploCommandResponse
+    public class ExampleCommandResponse
     {
         public decimal CurrentBalance { get; set; }
         public string Message { get; set; }

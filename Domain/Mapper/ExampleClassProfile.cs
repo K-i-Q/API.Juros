@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Domain.Commands;
+using Domain.Commands.Response;
 using Domain.Dtos;
 
 namespace Domain.Mapper
@@ -11,9 +11,9 @@ namespace Domain.Mapper
             //Exemplo sem configuração de membro
             //CreateMap<ExemploDtoResponse, ExemploCommandResponse>();
 
-            CreateMap<ExemploDtoResponse, ExemploCommandResponse>(MemberList.None)
+            CreateMap<ExemploDtoResponse, ExampleCommandResponse>(MemberList.None)
                 .ForMember(dest => dest.Message, opt => opt.Ignore())
-                .ForMember(dest => dest.CurrentBalance, opt => opt.MapFrom(src => src.saldo));
+                .ForMember(dest => dest.CurrentBalance, opt => opt.MapFrom(src => src.Saldo));
 
 
         }

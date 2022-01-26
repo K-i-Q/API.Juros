@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Domain.Commands;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,9 @@ namespace API.Juros.Controllers
         {
             _mapper = mapper;
         }
-        public IActionResult Index()
+
+        [HttpPost("taxaJuros")]
+        public IActionResult TaxaJurosIncluir(InterestRateCommand command)
         {
             return View();
         }

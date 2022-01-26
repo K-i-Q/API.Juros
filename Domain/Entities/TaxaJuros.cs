@@ -7,7 +7,7 @@ namespace Domain.Entities
     public class TaxaJuros : Entity
     {
         #region Propriedades
-        private decimal Taxa { get; set; }
+        public decimal Taxa { get; set; }
         #endregion Propriedades
 
         #region Construtores

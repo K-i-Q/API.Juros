@@ -2,6 +2,8 @@
 using AutoMapper;
 using Domain.Commands;
 using Domain.Dtos;
+using Domain.Entities;
+using Infra.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Filters;
 using System;
@@ -16,10 +18,12 @@ namespace API.Juros.Controllers
     public class JurosController : Controller
     {
         private readonly IMapper _mapper;
+        private readonly ITaxaJurosRepository _taxaJurosRepository;
 
-        public JurosController(IMapper mapper)
+        public JurosController(IMapper mapper, ITaxaJurosRepository taxaJurosRepository)
         {
             _mapper = mapper;
+            _taxaJurosRepository = taxaJurosRepository;
         }
 
         [ProducesResponseType(typeof(TaxaJurosDtoResponse), 200)]
@@ -27,9 +31,11 @@ namespace API.Juros.Controllers
         [HttpPost("taxaJuros")]
         public IActionResult TaxaJurosIncluir([FromBody] TaxaJurosDtoRequest request)
         {
+            var entidade = new TaxaJuros(1);
+            _taxaJurosRepository.Salvar(entidade);
             var command = _mapper.Map<InterestRateCommand>(request);
 
-            return View();
+            return Ok(entidade);
         }
     }
 }

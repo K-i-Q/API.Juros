@@ -19,7 +19,7 @@ namespace Infra.Repositories.CosmosDB
             var Collections = configuration.GetSection("CosmosDb").Get<CosmosDBOptions>().Collections;
 
             CollectionName = configuration.GetSection("CosmosDb").Get<CosmosDBOptions>().Collections.Where(x =>
-                x.Name.IndexOf("Transacao") >= 0
+                x.Name.IndexOf("TaxaJuros") >= 0
             ).FirstOrDefault().Name;
 
             Uri = configuration.GetSection("CosmosDb").Get<CosmosDBOptions>().Uri.ToString();

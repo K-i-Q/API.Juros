@@ -1,5 +1,6 @@
 using API.Juros.Configurations;
 using API.Juros.Configurations.Swagger;
+using Infra.Configurations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,7 +38,10 @@ namespace API.Juros
 
             services.AddSwaggerConfiguration()
                     .AddVersionConfiguration()
-                    .AddAutoMapperConfiguration();
+                    .AddAutoMapperConfiguration()
+                    .AddCommandsConfiguration()
+                    .AddRepositoriesConfiguration()
+                    .AddCosmosDbConfiguration(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

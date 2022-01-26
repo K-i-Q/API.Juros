@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Folder Include="Controllers\ResponseExamples\" />
-    <Folder Include="Controllers\RequestExamples\" />
   </ItemGroup>
 
 </Project>

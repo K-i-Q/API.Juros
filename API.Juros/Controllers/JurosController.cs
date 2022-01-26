@@ -1,6 +1,9 @@
-﻿using AutoMapper;
+﻿using API.Juros.Controllers.RequestExamples;
+using AutoMapper;
 using Domain.Commands;
+using Domain.Dtos;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +22,13 @@ namespace API.Juros.Controllers
             _mapper = mapper;
         }
 
+
+        [SwaggerRequestExample(typeof(TaxaJurosDtoRequest), typeof(InterestRateRequestExample))]
         [HttpPost("taxaJuros")]
-        public IActionResult TaxaJurosIncluir(InterestRateCommand command)
+        public IActionResult TaxaJurosIncluir(TaxaJurosDtoRequest request)
         {
+            var command = _mapper.Map<InterestRateCommand>(request);
+
             return View();
         }
     }

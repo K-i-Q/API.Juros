@@ -22,10 +22,10 @@ namespace API.Juros.Controllers
             _mapper = mapper;
         }
 
-
+        [ProducesResponseType(typeof(TaxaJurosDtoResponse), 200)]
         [SwaggerRequestExample(typeof(TaxaJurosDtoRequest), typeof(InterestRateRequestExample))]
         [HttpPost("taxaJuros")]
-        public IActionResult TaxaJurosIncluir(TaxaJurosDtoRequest request)
+        public IActionResult TaxaJurosIncluir([FromBody] TaxaJurosDtoRequest request)
         {
             var command = _mapper.Map<InterestRateCommand>(request);
 

@@ -9,7 +9,7 @@ namespace API.Juros.Controllers.RequestExamples
         {
             return new TaxaJurosDtoRequest 
             {
-                TaxaJuros = 0.01m
+                TaxaJuros = 1
             };
         }
     }

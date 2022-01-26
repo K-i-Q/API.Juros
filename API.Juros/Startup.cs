@@ -3,6 +3,7 @@ using API.Juros.Configurations.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -35,12 +36,15 @@ namespace API.Juros
                 });
 
             services.AddSwaggerConfiguration()
-                    .AddVersionConfiguration();
+                    .AddVersionConfiguration()
+                    .AddAutoMapperConfiguration();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider provider)
         {
+            var pathBase = Configuration.GetValue<string>("ReverseProxyBanking:PathBase");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -59,6 +63,8 @@ namespace API.Juros
 
             app.UseAuthorization();
 
+            app.UseSwaggerConfiguration(pathBase, provider);
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

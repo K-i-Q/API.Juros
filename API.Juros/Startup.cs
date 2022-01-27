@@ -3,16 +3,11 @@ using API.Juros.Configurations.Swagger;
 using Infra.Configurations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace API.Juros
 {
@@ -42,6 +37,7 @@ namespace API.Juros
                     .AddCommandsConfiguration()
                     .AddQueriesConfiguration()
                     .AddRepositoriesConfiguration()
+                    .AddMockConfiguration(Configuration)
                     .AddCosmosDbConfiguration(Configuration);
         }
 

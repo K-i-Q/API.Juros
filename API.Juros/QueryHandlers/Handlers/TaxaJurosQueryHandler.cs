@@ -1,8 +1,8 @@
-﻿using AutoMapper;
-using Domain.Commands;
+﻿using API.Juros.MockSetup;
+using AutoMapper;
 using Domain.Dtos;
-using Domain.Entities;
 using Infra.Repositories;
+using Infra.Repositories.CosmosDbMock;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,12 +13,15 @@ namespace API.Juros.QueryHandler.Handlers
     {
         private readonly IMapper _mapper;
         private readonly ITaxaJurosRepository _taxaJurosRepository;
+        private readonly ICosmosDbClientFactory _factory;
 
         public TaxaJurosQueryHandler(IMapper mapper,
-                                       ITaxaJurosRepository taxaJurosRepository)
+                                       ITaxaJurosRepository taxaJurosRepository,
+                                       TaxaJurosMockSetup taxaJurosMockSetup)
         {
             _mapper = mapper;
-            _taxaJurosRepository = taxaJurosRepository;
+            _taxaJurosRepository = taxaJurosMockSetup.Mocked ? new TaxaJurosRepositoryMock(_factory) : taxaJurosRepository;
+
         }
 
         public async Task<TaxaJurosDtoResponse> HandlerAsync()
@@ -26,7 +29,7 @@ namespace API.Juros.QueryHandler.Handlers
             var response = new TaxaJurosDtoResponse();
             try
             {
-                var entidadeBd = await _taxaJurosRepository.GetAll(_ => true);
+                var entidadeBd = await _taxaJurosRepository.Buscar();
 
                 if(entidadeBd == default || entidadeBd.Count == 0)
                     response.Mensagem = "Nenhuma Taxa de Juros foi encontrada";

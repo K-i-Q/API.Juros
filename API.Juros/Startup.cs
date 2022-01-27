@@ -40,6 +40,7 @@ namespace API.Juros
                     .AddVersionConfiguration()
                     .AddAutoMapperConfiguration()
                     .AddCommandsConfiguration()
+                    .AddQueriesConfiguration()
                     .AddRepositoriesConfiguration()
                     .AddCosmosDbConfiguration(Configuration);
         }

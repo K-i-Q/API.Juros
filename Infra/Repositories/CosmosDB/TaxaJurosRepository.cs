@@ -3,6 +3,7 @@ using Infra.Exceptions;
 using Microsoft.Azure.Documents;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -48,5 +49,17 @@ namespace Infra.Repositories.CosmosDB
 
         }
 
+        public async Task<IList<TaxaJuros>> Buscar()
+        {
+            try
+            {
+                return await GetAll(_ => true);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
     }
 }

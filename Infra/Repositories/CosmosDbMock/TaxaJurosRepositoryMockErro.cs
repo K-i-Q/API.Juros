@@ -2,6 +2,7 @@
 using Infra.Repositories.CosmosDB;
 using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Infra.Repositories.CosmosDbMock
@@ -26,6 +27,13 @@ namespace Infra.Repositories.CosmosDbMock
         public async Task<TaxaJuros> Buscar(Guid id)
         {
             var entity = new TaxaJuros();
+            return await Task.Run(() => entity);
+        }
+
+        public async Task<IList<TaxaJuros>> Buscar()
+        {
+            var entity = new List<TaxaJuros>();
+
             return await Task.Run(() => entity);
         }
     }

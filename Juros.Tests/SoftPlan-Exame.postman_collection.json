@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "12524f2f-0862-46d4-9965-b44a6dfbe468",
+		"name": "SoftPlan-Exame",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CalculaJuros",
+			"item": [
+				{
+					"name": "CalculaJuros",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Response have valid JSON Body\", () => {\r",
+									"    pm.response.to.have.body();\r",
+									"    pm.response.to.have.jsonBody();\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Deve retornar valor final e mensagem.\", () => {\r",
+									"    \r",
+									"    let jsonData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(jsonData.valorFinal).to.have.eql(105.1);\r",
+									"    pm.expect(jsonData.mensagem).to.eql(\"Sucesso\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:22965/v1/Calcula/calculaJuros?ValorInicial=100&Meses=5&api-version=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "22965",
+							"path": [
+								"v1",
+								"Calcula",
+								"calculaJuros"
+							],
+							"query": [
+								{
+									"key": "ValorInicial",
+									"value": "100"
+								},
+								{
+									"key": "Meses",
+									"value": "5"
+								},
+								{
+									"key": "api-version",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

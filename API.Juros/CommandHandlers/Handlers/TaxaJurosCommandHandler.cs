@@ -24,7 +24,6 @@ namespace API.Juros.CommandHandlers.Handlers
                                        TaxaJurosMockSetup taxaJurosMockSetup)
         {
             _mapper = mapper;
-            _taxaJurosRepository = taxaJurosRepository;
             _taxaJurosRepository = taxaJurosMockSetup.Mocked ? new TaxaJurosRepositoryMock(_factory) : taxaJurosRepository;
 
         }

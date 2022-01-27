@@ -30,7 +30,7 @@ namespace Infra.Repositories.CosmosDbMock
         }
         public async Task<IList<TaxaJuros>> Buscar()
         {
-            var entity = new List<TaxaJuros> { new TaxaJuros { Id = Guid.NewGuid().ToString(), Taxa = 1 } };
+            var entity = new List<TaxaJuros> { new TaxaJuros { Id = Guid.NewGuid().ToString(), Taxa = 0.01m } };
 
             return await Task.Run(() => entity);
         }

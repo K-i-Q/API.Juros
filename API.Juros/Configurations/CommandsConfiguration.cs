@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using API.Juros.CommandHandlers;
+using API.Juros.CommandHandlers.Handlers;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 
 namespace API.Juros.Configurations
@@ -10,11 +12,8 @@ namespace API.Juros.Configurations
             if (services == null)
                 throw new ArgumentNullException(nameof(services));
 
-            //services.AddScoped<IParceiroConsultarCommandHandler, ParceiroConsultarCommandHandler>();
-            //services.AddScoped<IPontosAtendimentoConsultarCommandHandler, PontosAtendimentoConsultarCommandHandler>();
-            //services.AddScoped<IProvedorConsultaCommandHandler, ProvedorConsultaCommandHandler>();
+            services.AddScoped<ITaxaJurosCommandHandler, TaxaJurosCommandHandler>();
 
-            //services.AddMediatR(typeof(SaqueCartaoFisicoStatusConsultarCommandHandler));
 
             return services;
         }

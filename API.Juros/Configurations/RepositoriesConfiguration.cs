@@ -1,6 +1,5 @@
 ﻿using Infra.Repositories;
 using Infra.Repositories.CosmosDB;
-using Infra.Repositories.CosmosDbMock;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 

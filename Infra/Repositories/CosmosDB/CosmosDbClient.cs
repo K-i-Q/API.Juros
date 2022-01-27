@@ -56,7 +56,7 @@ namespace Infra.Repositories.CosmosDB
 
             return response.ToList<Document>();
         }
-        
+
         public async Task<IList<Document>> ReadDocumentByAsync()
         {
             var option = new FeedOptions { EnableCrossPartitionQuery = true };
@@ -117,7 +117,7 @@ namespace Infra.Repositories.CosmosDB
 
             return response;
         }
-       
+
         public async Task<Document> DeleteDocumentAsync(string documentId, RequestOptions options = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
@@ -129,5 +129,6 @@ namespace Infra.Repositories.CosmosDB
 
             return response;
         }
+
     }
 }

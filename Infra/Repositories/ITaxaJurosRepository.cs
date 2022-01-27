@@ -9,6 +9,5 @@ namespace Infra.Repositories
         Task<TaxaJuros> Salvar(TaxaJuros example);
         Task<bool> Atualizar(TaxaJuros example);
         Task<TaxaJuros> Buscar(Guid id);
-
     }
 }
